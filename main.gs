@@ -30,7 +30,7 @@ function RedirectChecker() {
             if(FinalURL2 != FinalURL){
               ss.getRange("G"+i+":G"+i).setValue(FinalURL2)
               ss.getRange("H"+i+":H"+i).setValue(FinalURL2 == IdealUrl ? "Si" : "No")
-          }else{}
+          }else{} 
         }
       }else{
         ss.getRange("D"+i+":D"+i).setValue('HTTP '+responseCode)
