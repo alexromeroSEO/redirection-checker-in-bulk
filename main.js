@@ -29,7 +29,17 @@ function RedirectChecker() {
           var FinalURL2 = response2.getHeaders().Location;
           if(FinalURL2){
             ss.getRange("G"+i+":G"+i).setValue(FinalURL2)
-            ss.getRange("H"+i+":H"+i).setValue(FinalURL2 == IdealUrl ? "Si" : "No")
+          if(FinalURL2 == IdealUrl){
+          ss.getRange("H"+i+":H"+i).setValue("Si")  
+          }else{
+          ss.getRange("H"+i+":H"+i).setValue("No") 
+          var response3 = UrlFetchApp.fetch(FinalURL2, options);
+          var FinalURL3 = response3.getHeaders().Location;
+          if(FinalURL3){
+            ss.getRange("I"+i+":I"+i).setValue(FinalURL3)
+            ss.getRange("J"+i+":J"+i).setValue(FinalURL3 == IdealUrl ? "Si" : "No")
+          }else{}
+        }
           }else{}
         }
       }else{
