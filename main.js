@@ -1,5 +1,8 @@
 function RedirectChecker() {
+<<<<<<< HEAD
     HOLA HOLA
+=======
+>>>>>>> d57f81c3eb202836ec81ab0fb4b54e6d65d46e17
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var ufila = ss.getLastRow();
     i = 3;
@@ -31,7 +34,11 @@ function RedirectChecker() {
             if(FinalURL2 != FinalURL){
               ss.getRange("G"+i+":G"+i).setValue(FinalURL2)
               ss.getRange("H"+i+":H"+i).setValue(FinalURL2 == IdealUrl ? "Si" : "No")
+<<<<<<< HEAD
           }else{}
+=======
+          }else{} 
+>>>>>>> d57f81c3eb202836ec81ab0fb4b54e6d65d46e17
         }
       }else{
         ss.getRange("D"+i+":D"+i).setValue('HTTP '+responseCode)
@@ -43,4 +50,8 @@ function RedirectChecker() {
     
   
   
+<<<<<<< HEAD
   
+=======
+  
+>>>>>>> d57f81c3eb202836ec81ab0fb4b54e6d65d46e17
