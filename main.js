@@ -1,4 +1,5 @@
-function fetchPage() {
+function RedirectChecker() {
+    HOLA HOLA
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var ufila = ss.getLastRow();
     i = 3;
@@ -15,19 +16,25 @@ function fetchPage() {
     const iterator = urls.forEach(url => {
       var IdealUrl = ss.getRange("C"+i+":C"+i).getValues() 
       var response = UrlFetchApp.fetch(url, options );
-      var FinalURL = response.getHeaders().Location;
       var responseCode = response.getResponseCode()
-      ss.getRange("F"+i+":F"+i).setValue(FinalURL == IdealUrl ? "Si" : "No")
       var redirect = /^3.+/.test(responseCode);
-      ss.getRange("D"+i+":D"+i).setValue('HTTP '+responseCode)
-      ss.getRange("E"+i+":E"+i).setValue(redirect  ? FinalURL : "")
       if(redirect){
-        var response2 = UrlFetchApp.fetch(FinalURL, options );
-        var FinalURL2 = response2.getHeaders().Location;
-        var responseCode2 = response2.getResponseCode()
-        ss.getRange("G"+i+":G"+i).setValue(FinalURL2)
-        ss.getRange("H"+i+":H"+i).setValue(FinalURL2 == IdealUrl ? "Si" : "No")
-        debugger
+        ss.getRange("D"+i+":D"+i).setValue('HTTP '+responseCode)
+        var FinalURL = response.getHeaders().Location;
+        ss.getRange("E"+i+":E"+i).setValue(FinalURL)
+          if(FinalURL == IdealUrl){
+          ss.getRange("F"+i+":F"+i).setValue("Si")  
+          }else{
+          ss.getRange("F"+i+":F"+i).setValue("No") 
+          var response2 = UrlFetchApp.fetch(FinalURL, options);
+          var FinalURL2 = response2.getHeaders().Location;
+            if(FinalURL2 != FinalURL){
+              ss.getRange("G"+i+":G"+i).setValue(FinalURL2)
+              ss.getRange("H"+i+":H"+i).setValue(FinalURL2 == IdealUrl ? "Si" : "No")
+          }else{}
+        }
+      }else{
+        ss.getRange("D"+i+":D"+i).setValue('HTTP '+responseCode)
       }
       i++
       }
