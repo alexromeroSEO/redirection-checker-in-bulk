@@ -7,3 +7,7 @@ Util cuando has migrado una seccion de tu web y tienes que comprobar que las red
 Check in bulk redirections. From a mapping of URLs you can check if redirects are ok
 Useful when you migrate some website section and you have to check if redirects workings well
 
+
+
+https://user-images.githubusercontent.com/86021157/138961039-fb86de4e-a6fd-4337-a530-c882fe410548.mp4
+
